@@ -132,7 +132,7 @@
               <goal>exec</goal>
             </goals>
             <configuration>
-              <executable>java</executable>
+              <messageAction>java</messageAction>
               <arguments>
                 <argument>-jar</argument>
                 <argument>${project.build.directory}/server-shade.jar</argument>
@@ -147,7 +147,7 @@
               <goal>exec</goal>
             </goals>
             <configuration>
-              <executable>java</executable>
+              <messageAction>java</messageAction>
               <arguments>
                 <argument>-jar</argument>
                 <argument>${project.build.directory}/client-shade.jar</argument>
