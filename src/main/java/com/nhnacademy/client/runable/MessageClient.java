@@ -53,7 +53,7 @@ public class MessageClient implements Runnable {
 
             while ((userMessage = stdIn.readLine())!=null){
                 out.println(userMessage);
-                System.out.println(String.format("recv-message:%s",clientIn.readLine()));
+                System.out.println(String.format("[client]recv-message:%s",clientIn.readLine()));
                 System.out.print("send-message:");
             }
 

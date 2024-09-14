@@ -7,7 +7,7 @@ import java.io.*;
 
 @Slf4j
 public class ServerMain {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         MessageServer messageServer = new MessageServer();
         Thread thread = new Thread(messageServer);
         thread.start();

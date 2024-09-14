@@ -45,6 +45,12 @@
       <artifactId>junit-vintage-engine</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <scope>test</scope>
+    </dependency>
+
 
     <!-- logging -->
     <dependency>
@@ -65,25 +71,16 @@
       <version>3.16.0</version>
     </dependency>
 
-    <dependency>
-      <groupId>org.codehaus.mojo</groupId>
-      <artifactId>exec-maven-plugin</artifactId>
-      <version>3.4.1</version>
-    </dependency>
-
-
   </dependencies>
 
   <build>
-    <finalName>server</finalName>
+
     <plugins>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-
         <executions>
-
           <execution>
             <id>server</id>
             <goals>
@@ -115,46 +112,6 @@
               </transformers>
             </configuration>
           </execution>
-
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>3.4.1</version>
-        <executions>
-
-          <execution>
-            <id>run-server</id>
-            <phase>package</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <configuration>
-              <executable>java</executable>
-              <arguments>
-                <argument>-jar</argument>
-                <argument>${project.build.directory}/server-shade.jar</argument>
-              </arguments>
-            </configuration>
-          </execution>
-
-          <execution>
-            <id>run-client</id>
-            <phase>package</phase>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <configuration>
-              <executable>java</executable>
-              <arguments>
-                <argument>-jar</argument>
-                <argument>${project.build.directory}/client-shade.jar</argument>
-              </arguments>
-            </configuration>
-          </execution>
-
         </executions>
       </plugin>
 
