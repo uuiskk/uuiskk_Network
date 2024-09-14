@@ -107,7 +107,6 @@
               </transformers>
             </configuration>
           </execution>
-
         </executions>
       </plugin>
 
