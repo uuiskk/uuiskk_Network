@@ -34,7 +34,7 @@ public class MessageSubject implements Subject {
            - observer.updateMessage(message)를 호출 합니다.
         */
         for(Observer observer : observers){
-            
+
         }
     }
 }
