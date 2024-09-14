@@ -17,13 +17,16 @@ public class TimeResponse implements Response {
 
     @Override
     public String execute(String value) {
+        //TODO#1 LocalDateTime을 이용해서 현재 시간을 설정하세요.
         LocalDateTime now = LocalDateTime.now();
 
+        //TODO#2 value(date format) "" or null 이면 DEFAULT_DATETIME_FORMAT 으로 반환 합니다.
         if(StringUtils.isEmpty(value)){
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(DEFAULT_DATETIME_FORMAT);
             return now.format(dateTimeFormatter);
         }
 
+        //TODO#3  value(date format) 의해서 formatting 하는과정에서 value의 형식이 잘못되었다면 DEFAULT_DATETIME_FORMAT으로 반환 합니다.
         try {
             DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(value);
             return now.format(dateTimeFormatter);

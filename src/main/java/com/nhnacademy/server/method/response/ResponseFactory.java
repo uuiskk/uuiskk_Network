@@ -10,6 +10,7 @@ import java.util.Objects;
 public class ResponseFactory {
     private static final ArrayList<Response> responseList = new ArrayList<>(){{
         add(new EchoResponse());
+        //TODO#4 TimeReponse 객체를 등록 합니다.
         add(new TimeResponse());
     }};
 
@@ -23,4 +24,5 @@ public class ResponseFactory {
         }
         return response;
     }
+
 }
