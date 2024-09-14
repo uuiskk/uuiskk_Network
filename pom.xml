@@ -68,9 +68,8 @@
   </dependencies>
 
   <build>
-    <finalName>server</finalName>
-    <plugins>
 
+    <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
@@ -107,7 +106,6 @@
               </transformers>
             </configuration>
           </execution>
-
         </executions>
       </plugin>
 

@@ -10,9 +10,7 @@ import com.nhnacademy.client.ui.form.MessageClientForm;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Objects;
@@ -57,6 +55,11 @@ public class MessageClient implements Runnable {
     }
 
     private void startReceivedMessageClient(){
+        /*TODO#2-6 receivedMessageClient를 이용해서 thread를 생성하고 시작 합니다.
+            - message를 수신하는 역할
+            - 즉 message의 수신과 송신을 비동기 적으로 처리하기 위함.
+            - 지금 까지는 client -> message를 server에 전송 server는 client에게 응답하는 방식. 즉 동기방식
+         */
         ReceivedMessageClient receivedMessageClient = new ReceivedMessageClient(clientSocket, subject);
         Thread thread = new Thread(receivedMessageClient);
         thread.start();
@@ -67,9 +70,10 @@ public class MessageClient implements Runnable {
         try(
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(),true);
         ){
+            //TODO#2-7 송신 관련해서 Observer를 설정 합니다. configSendObserver()를 호출하세요
             configSendObserver(out);
 
-            //ui 실행
+            //TODO#2-9 MessageClientForm는 message 송신과 수신을 담당하는 UI 역할을 합니다.  MessageClientForm.showUI()호출해서 UI를 rendering 합니다.
             MessageClientForm.showUI(subject);
 
             while (!Thread.currentThread().isInterrupted()){
@@ -93,9 +97,13 @@ public class MessageClient implements Runnable {
     private void configSendObserver(PrintWriter printWriter){
         SendMessageAction sendMessageAction = null;
         try {
+            //sendMessageAction은 송신 event 발생시 MessageSendObserver Observer에 의해서 실제 송신을 당당하는 객체 입니다.
+
+            //TODO#2-8 observer를 관리하는 subject에 observer를 등록 합니다. eventType : EventType.SEND
             sendMessageAction = new SendMessageAction(printWriter);
             Observer observer = new MessageSendObserver(sendMessageAction);
             subject.register(EventType.SEND,observer);
+
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
