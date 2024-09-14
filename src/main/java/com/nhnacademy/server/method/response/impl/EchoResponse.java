@@ -10,7 +10,7 @@ public class EchoResponse implements Response {
     @Override
     public String getMethod() {
         //TODO#1-5 EchoResponse의 METHOD 를 반환 합니다.
-        return METHOD;
+        return null;
     }
 
     @Override
@@ -19,6 +19,6 @@ public class EchoResponse implements Response {
             - ex) echo hello message -> method = echo , value = hello 임으로 value를 반환 합니다.
         */
 
-        return value;
+        return null;
     }
 }
