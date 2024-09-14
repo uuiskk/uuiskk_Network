@@ -13,8 +13,9 @@ import java.util.Objects;
 public class ResponseFactory {
     private static final ArrayList<Response> responseList = new ArrayList<>(){{
         add(new EchoResponse());
-        add(new PortResponse());
         add(new TimeResponse());
+        //TODO#2 PortResponse 생성 후 추가 합니다.
+
     }};
 
     public static Response getResponse(String method){
