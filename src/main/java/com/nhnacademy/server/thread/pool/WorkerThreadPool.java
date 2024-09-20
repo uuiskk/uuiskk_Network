@@ -37,7 +37,7 @@ public class WorkerThreadPool {
         this.runnable = runnable;
 
         workerThreads = new Thread[poolSize];
-
+        initilizePool();
     }
 
     private void initilizePool(){
