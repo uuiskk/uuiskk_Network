@@ -21,6 +21,9 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class MessageServer implements Runnable {
@@ -29,6 +32,8 @@ public class MessageServer implements Runnable {
     private final ServerSocket serverSocket;
     private final WorkerThreadPool workerThreadPool;
     private final RequestChannel requestChannel;
+
+    private static final Map<String,Socket> clientMap = new ConcurrentHashMap<>();
 
     public MessageServer(){
         this(DEFAULT_PORT);
@@ -66,4 +71,24 @@ public class MessageServer implements Runnable {
         }
     }//end method
 
+    public static boolean addClient(String id, Socket socket){
+        if(clientMap.containsKey(id)){
+            log.debug("id:{}, aready exist client socket!", id);
+            return false;
+        }
+
+        clientMap.put(id,socket);
+        return true;
+    }
+    public static List<String> getClientIds(){
+        return clientMap.keySet().stream().collect(Collectors.toList());
+    }
+
+    public static Socket getClientSocket(String id){
+        return clientMap.get(id);
+    }
+
+    public static void removeClient(Socket client){
+        clientMap.remove(client);
+    }
 }
