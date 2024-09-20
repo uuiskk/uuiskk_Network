@@ -27,7 +27,7 @@ public class BroadCastResponse implements Response {
     @Override
     public String getMethod() {
         //TODO#1-1 method = "broadcast" 설정 합니다.
-        return "broadcast";
+        return "";
     }
 
     @Override
@@ -39,26 +39,11 @@ public class BroadCastResponse implements Response {
             - value 값은 client에게 전송할 message 입니다.
          */
 
-        List<String> ids = MessageServer.getClientIds();
+        List<String> ids = null;
         int sendCount=0;
 
-        for(String id : ids){
-            Socket client = MessageServer.getClientSocket(id);
-            if(client.isClosed()){
-                if(Session.isLogin()) {
-                    MessageServer.removeClient(Session.getCurrentId());
-                }
-                continue;
-            }
-            try {
-                log.debug("id:{},{}",id,client);
-                PrintWriter out = new PrintWriter(client.getOutputStream(),true);
-                out.println(value);
-                sendCount++;
-            } catch (IOException e) {
-                log.debug("broadcast-error:{}",e.getMessage(),e);
-            }
-        }
+        
+
         return String.format("{%d}명에게 \"{%S}\"를 전송 했습니다.",sendCount,value);
     }
 }
