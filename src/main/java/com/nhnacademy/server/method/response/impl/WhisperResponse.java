@@ -24,15 +24,20 @@ import java.net.Socket;
 public class WhisperResponse implements Response {
     @Override
     public String getMethod() {
+        //TODO#2-1 method = "whisper" 반환 합니다.
         return "whisper";
     }
 
     @Override
     public String execute(String value) {
+        //whisper marco hello 형태로 호출됩니다.
+        //method는 whisper, value는 marco hello <-- 입니다.
 
+        //TODO#2-2 로기인 되어있지 않다면 "login required!" 반환 합니다.
         if(!Session.isLogin()){
             return "login required!";
         }
+        //TODO#2-3 value null or "" 이면 "empty message!" 반환 합니다.
         if(StringUtils.isEmpty(value)){
             return "empty message!";
         }
@@ -42,6 +47,7 @@ public class WhisperResponse implements Response {
             return "empty message!";
         }
 
+        //TODO#2-4 value 가 marco hello 라면 marco아이디를 사용하는 cleint에게 hello message를 응답합니다.
         String id = values[0];
         String message = value.substring(id.length());
 
@@ -52,6 +58,8 @@ public class WhisperResponse implements Response {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+        //TODO#2-5 메시지 전송이 완료되면, "[whisper][marco]" hello 형태로 반환 합니다.
         return String.format("[%s][%s] %s", getMethod(), id, message );
     }
 }
