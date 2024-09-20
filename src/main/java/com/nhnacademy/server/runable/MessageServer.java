@@ -35,7 +35,7 @@ public class MessageServer implements Runnable {
     private final RequestChannel requestChannel;
 
     //TODO#1-1 - client Socket을 저장할 map 저장소를, ConcurrentHashMap을 이용해서 생성 합니다.
-    private static final Map<String,Socket> clientMap = new ConcurrentHashMap<>();
+    private static final Map<String,Socket> clientMap = null;
 
     public MessageServer(){
         this(DEFAULT_PORT);
@@ -75,30 +75,24 @@ public class MessageServer implements Runnable {
 
     public static boolean addClient(String id, Socket client){
         //TODO#1-2, clientMap에 id가 이미 존재하면 로그를 출력하고, false를 반환 합니다.
-        if(clientMap.containsKey(id)){
-            log.debug("id:{}, aready exist client socket!", id);
-            return false;
-        }
+
 
         //TODO#1-3 id, client(Socket)을 map에 등록 하고 true를 반환 합니다.
-        clientMap.put(id,client);
-        return true;
+        return false;
     }
 
     public static List<String> getClientIds(){
         //TODO#1-4 clientMap의 key(id)를 List<String>으로 반환 합니다.
-        return clientMap.keySet().stream().collect(Collectors.toList());
+        return null;
     }
 
     public static Socket getClientSocket(String id){
         //TODO#1-5 id를 이용해서 Client Socket을 반환 합니다.
-        return clientMap.get(id);
+        return null;
     }
 
     public static void removeClient(String id){
         //TODO#1-6 id를 이용해서 clientMap에서 client Socket을 제거 합니다.
-        if(StringUtils.isNotEmpty(id)) {
-            clientMap.remove(id);
-        }
+
     }
 }
