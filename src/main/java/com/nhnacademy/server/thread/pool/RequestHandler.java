@@ -20,19 +20,19 @@ import lombok.extern.slf4j.Slf4j;
 public class RequestHandler implements Runnable {
     public RequestHandler(RequestChannel requestChannel) {
         //TODO#3-1 requestChannel을 초기화 합니다.
-        this.requestChannel = requestChannel;
+        this.requestChannel = null;
     }
 
     private final RequestChannel requestChannel;
 
     @Override
     public void run() {
-        //TODO#3-2 thread interupted가 발생하면 종료 됩니다. while 조건을 수정하세요.
-        while (!Thread.currentThread().isInterrupted()) {
+        //TODO#3-2 thread interupted가 발생하면 종료 됩니다. while 조건을 수정 하세요.
+        while (true) {
             try {
                 //TODO#3-3 requestChannel로 부터 실행할 작업을 획득 후 execute method를 호출 해서 실행 합니다.
-                Executable executable = requestChannel.getJob();
-                executable.execute();
+                Executable executable = null;
+
             }catch (Exception e){
                 if(e instanceof InterruptedException){
                     log.debug("thread 종료!");
