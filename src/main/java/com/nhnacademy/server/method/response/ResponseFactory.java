@@ -14,19 +14,32 @@ package com.nhnacademy.server.method.response;
 
 import com.nhnacademy.server.method.response.impl.*;
 import lombok.extern.slf4j.Slf4j;
+import org.reflections.Reflections;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Set;
 
 @Slf4j
 public class ResponseFactory {
-    private static final ArrayList<Response> responseList = new ArrayList<>(){{
-        add(new EchoResponse());
-        add(new PortResponse());
-        add(new TimeResponse());
-        add(new LoginResponse());
-        add(new BroadCastResponse());
-    }};
+    private static final ArrayList<Response> responseList = new ArrayList<>();
+    //maven-repository : https://mvnrepository.com/artifact/org.reflections/reflections
+    //[참고] https://www.baeldung.com/reflections-library
+    
+    static {
+        Reflections reflections = new Reflections("com.nhnacademy.server");
+        Set<Class<? extends Response>> classes = reflections.getSubTypesOf(Response.class);
+
+        for (Class<? extends Response> clazz : classes) {
+            try {
+                Response response = clazz.getDeclaredConstructor().newInstance();
+                log.debug("response-factory init :  instance :{}", response.getClass().getName() );
+                responseList.add(response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     public static Response getResponse(String method){
         Response response = responseList.stream()
