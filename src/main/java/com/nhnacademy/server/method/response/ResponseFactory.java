@@ -12,7 +12,6 @@
 
 package com.nhnacademy.server.method.response;
 
-import com.nhnacademy.server.method.response.impl.*;
 import lombok.extern.slf4j.Slf4j;
 import org.reflections.Reflections;
 
