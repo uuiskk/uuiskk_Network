@@ -69,8 +69,11 @@ public class MethodJob implements Executable {
                 if(Objects.nonNull(client)){
                     client.close();
                     log.debug("client 정상종료");
+
                     //client제거
-                    MessageServer.removeClient(client);
+                    if(Session.isLogin()) {
+                        MessageServer.removeClient(Session.getCurrentId());
+                    }
                 }
             } catch (IOException e) {
                 log.error("error-client-close : {}",e.getMessage(),e);
