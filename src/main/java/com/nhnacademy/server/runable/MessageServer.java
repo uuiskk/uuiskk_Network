@@ -17,6 +17,7 @@ import com.nhnacademy.server.thread.channel.RequestChannel;
 import com.nhnacademy.server.thread.pool.RequestHandler;
 import com.nhnacademy.server.thread.pool.WorkerThreadPool;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -88,7 +89,9 @@ public class MessageServer implements Runnable {
         return clientMap.get(id);
     }
 
-    public static void removeClient(Socket client){
-        clientMap.remove(client);
+    public static void removeClient(String id){
+        if(StringUtils.isNotEmpty(id)) {
+            clientMap.remove(id);
+        }
     }
 }
