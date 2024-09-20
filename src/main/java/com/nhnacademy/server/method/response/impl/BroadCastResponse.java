@@ -26,11 +26,19 @@ import java.util.List;
 public class BroadCastResponse implements Response {
     @Override
     public String getMethod() {
+        //TODO#1-1 method = "broadcast" 설정 합니다.
         return "broadcast";
     }
 
     @Override
     public String execute(String value) {
+
+        /* TODO#1-2 MessageServer.getClientIds() 해당되는 모든 client에게 message를 전송 합니다.
+            - PrintWriter를  사용해서 각 client에게 응답 합니다.
+            - 응답시 sendCount가 증가 됩니다.
+            - value 값은 client에게 전송할 message 입니다.
+         */
+
         List<String> ids = MessageServer.getClientIds();
         int sendCount=0;
 
