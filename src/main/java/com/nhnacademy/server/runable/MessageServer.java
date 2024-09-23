@@ -28,12 +28,14 @@ public class MessageServer implements Runnable {
 
     public MessageServer(){
         //TODO#1-1 기본 생성자를 초기화 합니다. port 지정이 안된다면 DEFAULT_PORT(8888)를 사용 합니다.
-        this(0);
+        this(DEFAULT_PORT);
     }
 
     public MessageServer(int port) {
         //TODO#1-2 port <=0 이면 IllegalArgumentException이 발생 합니다.
-
+        if (port <= 0) {
+            throw new IllegalArgumentException();
+        }
 
         //TODO#1-3 port를 초기화 합니다.
         this.port = port;
