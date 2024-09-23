@@ -67,7 +67,7 @@ public class MessageServer implements Runnable {
                     System.out.println("[server]recv-message:" + recvMessage);
                     //TODO#1-10 MethodParser를 이용해서 recvMessage를 파싱 합니다.
 
-                    MethodParser.MethodAndValue methodAndValue = null;
+                    MethodParser.MethodAndValue methodAndValue = MethodParser.parse(recvMessage);
 
                     log.debug("method:{},value:{}",methodAndValue.getMethod(),methodAndValue.getValue());
 
