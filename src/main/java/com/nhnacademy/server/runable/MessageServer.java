@@ -36,7 +36,7 @@ public class MessageServer implements Runnable {
 
 
         //TODO#1-3 port를 초기화 합니다.
-        this.port = 0;
+        this.port = port;
 
         //TODO#1-4 port를 이용해서  serverSocket을 생성 합니다.
         serverSocket = null;
