@@ -36,5 +36,4 @@ public class ResponseFactory {
         }
         return response;
     }
-
 }

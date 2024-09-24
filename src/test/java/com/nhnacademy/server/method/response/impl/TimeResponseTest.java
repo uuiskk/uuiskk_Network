@@ -36,12 +36,14 @@ class TimeResponseTest {
     @Test
     void getMethod() {
         //TODO#5 getMethod()를 호출 후 time과 일치하는지 검증하세요
+
         Assertions.assertEquals("time", response.getMethod());
     }
 
     @Test
     void validate(){
         //TODO#6 response.validate()를 검증하세요
+
         Assertions.assertTrue(response.validate("time"));
     }
 

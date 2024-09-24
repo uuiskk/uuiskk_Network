@@ -43,6 +43,7 @@ public class TimeResponse implements Response {
             return now.format(dateTimeFormatter);
         } catch (Exception e) {
             return now.format(DateTimeFormatter.ofPattern(DEFAULT_DATETIME_FORMAT));
+
         }
     }
 }
