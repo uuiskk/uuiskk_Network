@@ -47,7 +47,7 @@ public class WorkerThreadPool {
 
     private void initilizePool(){
         //TODO#4-6 runnable를 이용해서 thread를 생성 합니다.
-        for(int i=0; i<poolSize; i++){
+        for(int i=0; i < poolSize; i++){
             workerThreads[i] = new Thread(runnable);
         }
     }

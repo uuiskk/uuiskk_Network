@@ -33,7 +33,6 @@ public class RequestChannel {
                 throw new RuntimeException(e);
             }
         }
-
         //TODO#1-3 requestQueue에 executable을 추가히고 대기하고 있는 thread를 깨웁니다.
         notifyAll();
     }

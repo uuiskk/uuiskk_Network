@@ -64,7 +64,6 @@ public class MethodJob implements Executable {
                 }else {
                     sendMessage = String.format("{%s} method not found!", methodAndValue.getMethod());
                 }
-
                 out.println(sendMessage);
                 out.flush();
             }

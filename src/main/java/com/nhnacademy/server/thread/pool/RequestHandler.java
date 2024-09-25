@@ -39,6 +39,7 @@ public class RequestHandler implements Runnable {
                     log.debug("thread 종료!");
                     Thread.currentThread().interrupt();
                 }
+
                 log.error("thread-exception : {}", e.getMessage(),e);
             }
         }
