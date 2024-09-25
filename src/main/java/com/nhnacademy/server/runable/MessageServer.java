@@ -48,8 +48,8 @@ public class MessageServer implements Runnable {
         }
 
         //TODO#5-1 requestChannel, workerThreadPool 초기화 합니다.
-        requestChannel = null;
-        workerThreadPool = null;
+        requestChannel = new RequestChannel();
+        workerThreadPool = new WorkerThreadPool(new RequestHandler(requestChannel));
     }
 
     @Override
