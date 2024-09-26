@@ -68,6 +68,6 @@ public class WhisperResponse implements Response {
 
         //TODO#2-5 메시지 전송이 완료되면, "[whisper][marco]" hello 형태로 반환 합니다.
 
-        return "[whisper]->[" + clientId + "]: " + message;
+        return "whisper" + clientId + message;
     }
 }
